@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import MovieFinder from "../../apis/MovieFinder";
-import { MoviesContext } from "../../context/MoviesContext";
+import MovieFinder from "../apis/MovieFinder";
+import { MoviesContext } from "../context/MoviesContext";
 
 function HomePage(props) {
   const { movies, setMovies } = useContext(MoviesContext);
