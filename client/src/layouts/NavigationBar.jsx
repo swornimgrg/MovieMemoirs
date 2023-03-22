@@ -10,7 +10,7 @@ function NavigationBar() {
     <Navbar bsPrefix="navbar" expand="lg">
       <Container fluid>
         <Navbar.Brand bsPrefix="navbar" href="#">
-          Mmovies
+          MovieMemoirs
         </Navbar.Brand>
         <Navbar.Toggle bsPrefix="navbar-toggler" />
         <Navbar.Collapse>

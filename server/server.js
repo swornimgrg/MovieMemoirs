@@ -15,7 +15,7 @@ app.get('/api/movies',async(req,res)=>{
         res.status(200).json({
             status: "sucess",
             results:  results.rows.length,
-            data: results.rows,
+            movies: results.rows,
                         
         })
     }
