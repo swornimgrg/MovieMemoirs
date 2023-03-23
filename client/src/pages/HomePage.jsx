@@ -26,7 +26,7 @@ function HomePage(props) {
     <Container bsPrefix="container">
       <Row xs={1} md={4} className="g-4">
         {movies.map((movie) => (
-          <Col>
+          <Col key={movie.id}>
             <MovieCard
               title={movie.name}
               date={movie.release_date}
