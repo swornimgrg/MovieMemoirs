@@ -5,7 +5,7 @@ import { MoviesContext } from "../context/MoviesContext";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/esm/Container";
-import "./Homepage.css";
+import "./HomePage.css";
 
 function HomePage(props) {
   const { movies, setMovies } = useContext(MoviesContext);
