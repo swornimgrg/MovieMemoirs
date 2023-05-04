@@ -30,7 +30,7 @@ function HomePage(props) {
             <MovieCard
               title={movie.name}
               date={movie.release_date}
-              link={movie.link}
+              video_id={movie.video_id}
             />
           </Col>
         ))}

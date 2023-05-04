@@ -14,7 +14,7 @@ function App() {
    <Router>
      <Routes>
        <Route path="/" element={<HomePage/>} />
-       <Route path="/watch/:id" element={<WatchMoviePage/>} />
+       <Route path="/watch/:video_id" element={<WatchMoviePage/>} />
      </Routes>
    </Router>
     </div>
