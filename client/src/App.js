@@ -10,8 +10,9 @@ function App() {
   return (
     <MoviesContextProvider>
     <div className="App">
-  <NavigationBar />
    <Router>
+  <NavigationBar />
+
      <Routes>
        <Route path="/" element={<HomePage/>} />
        <Route path="/watch/:video_id" element={<WatchMoviePage/>} />

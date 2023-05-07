@@ -14,7 +14,7 @@ function HomePage(props) {
       try {
         const response = await MovieFinder.get("/");
         setMovies(response.data.movies);
-        console.log(response);
+        console.log(movies);
       } catch (err) {
         console.log(err);
       }
@@ -22,6 +22,7 @@ function HomePage(props) {
 
     fetchData();
   }, [setMovies]);
+
   return (
     <Container bsPrefix="container">
       <Row xs={1} md={4} className="g-4">
