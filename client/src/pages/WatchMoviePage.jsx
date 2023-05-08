@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { useParams } from "react-router-dom";
 import "./WatchMoviePage.css";
+import { MoviesContext } from "../context/MoviesContext";
 
-export default function WatchMoviePage() {
+export default function WatchMoviePage(props) {
   let { video_id } = useParams();
+  const { movies } = useContext(MoviesContext);
+  const index = movies.findIndex((movie) => video_id === movie.video_id);
 
   return (
-    <Container bsPrefix="container">
-      <iframe
-        className="responsive-iframe"
-        src={`https://www.youtube.com/embed/${video_id}`}
-        width="100%"
-        height="100%"
-        allowFullScreen
-      />
+    <Container>
+      <h3>{movies[index].name}</h3>
+      <div className="movie-container">
+        <iframe
+          className="responsive-iframe"
+          title={movies[index].name}
+          src={`https://www.youtube.com/embed/${video_id}?modestbranding=1&autohide=1&&showinfo=0`}
+          width="100%"
+          height="100%"
+          allowFullScreen
+        />
+      </div>
     </Container>
   );
 }

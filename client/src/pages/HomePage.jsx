@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import MovieFinder from "../apis/MovieFinder";
+import React, { useContext } from "react";
 import MovieCard from "../components/MovieCard";
 import { MoviesContext } from "../context/MoviesContext";
 import Col from "react-bootstrap/Col";
@@ -8,20 +7,7 @@ import Container from "react-bootstrap/esm/Container";
 import "./HomePage.css";
 
 function HomePage(props) {
-  const { movies, setMovies } = useContext(MoviesContext);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await MovieFinder.get("/");
-        setMovies(response.data.movies);
-        console.log(movies);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchData();
-  }, [setMovies]);
+  const { movies } = useContext(MoviesContext);
 
   return (
     <Container bsPrefix="container">

@@ -6,7 +6,7 @@ import NavigationBar from './layouts/NavigationBar';
 import WatchMoviePage from './pages/WatchMoviePage';
 
 function App() {
-
+ 
   return (
     <MoviesContextProvider>
     <div className="App">
