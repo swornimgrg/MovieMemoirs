@@ -4,12 +4,20 @@ import MovieFinder from "../apis/MovieFinder";
 export const MoviesContext = createContext();
 
 export const MoviesContextProvider = (props) => {
-  const [movies, setMovies] = useState(sessionStorage.getItem("data") || null);
+  const [movies, setMovies] = useState([]);
 
   const storeData = (value) => {
     const serializedData = JSON.stringify(value);
     sessionStorage.setItem("data", serializedData);
     setMovies(value);
+  };
+
+  const getData = () => {
+    const storedData = JSON.parse(sessionStorage.getItem("data"));
+    if (storedData) {
+      setMovies(storedData);
+      console.log(storedData);
+    }
   };
 
   useEffect(() => {
@@ -24,6 +32,7 @@ export const MoviesContextProvider = (props) => {
     };
 
     fetchData();
+    getData();
   }, [setMovies]);
 
   return (

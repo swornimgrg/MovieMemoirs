@@ -12,7 +12,6 @@ function App() {
     <div className="App">
    <Router>
   <NavigationBar />
-
      <Routes>
        <Route path="/" element={<HomePage/>} />
        <Route path="/watch/:video_id" element={<WatchMoviePage/>} />
