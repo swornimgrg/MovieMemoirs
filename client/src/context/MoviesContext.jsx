@@ -16,7 +16,6 @@ export const MoviesContextProvider = (props) => {
     const storedData = JSON.parse(sessionStorage.getItem("data"));
     if (storedData) {
       setMovies(storedData);
-      console.log(storedData);
     }
   };
 

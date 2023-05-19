@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import { useParams } from "react-router-dom";
 import "./WatchMoviePage.css";
-import { MoviesContext } from "../context/MoviesContext";
 
 export default function WatchMoviePage(props) {
   let { video_id } = useParams();
-  const { movies } = useContext(MoviesContext);
+  const movies = JSON.parse(sessionStorage.getItem("data"));
   const index = movies.findIndex((movie) => video_id === movie.video_id);
 
   return (
