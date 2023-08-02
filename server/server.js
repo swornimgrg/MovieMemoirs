@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require('express')
 const app= express()
 const db = require("./db")
@@ -18,6 +17,7 @@ app.get('/api/movies',async(req,res)=>{
             movies: results.rows,
                         
         })
+        console.log("Database connected");
         
     }
     catch(err){
@@ -43,6 +43,10 @@ app.get('/api/movies/:name', async(req, res)=>{
     catch(err){
         console.log(err);
     }
+})
+
+app.get('/api/search', async(req, res)=>{
+    console.log(req.query);
 })
 
 
