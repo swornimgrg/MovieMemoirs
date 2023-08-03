@@ -46,8 +46,21 @@ app.get('/api/movies/:name', async(req, res)=>{
 })
 
 app.get('/api/search', async(req, res)=>{
-    console.log(req.query);
-})
+   try{
+    const { query } = req.query;
+
+    const searchQuery = `SELECT * FROM movies WHERE name ILIKE '%${query}%'`;
+    
+    const searchResult = await db.query(searchQuery);
+
+    res.json(searchResult);
+    console.log(searchResult)
+   }
+   catch(error){
+    console.error('Error during search', error);
+    res.status(500).json({message: 'Internal server error'})
+   }
+});
 
 
 app.listen(port,()=>{console.log(`listening on port ${port}`)})

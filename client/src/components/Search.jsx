@@ -3,46 +3,37 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function Search() {
-  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query }),
-      });
+      const response = await fetch(`/api/search?query=${searchQuery}`);
+      const data = await response.json();
 
-      if (response.ok) {
-        const data = await response.json();
-        // Handle the search results received from the backend
-        console.log(data);
-      } else {
-        // Handle the error case
-        console.log("Error:", response.status);
-      }
+      setSearchResults(data.rows);
     } catch (error) {
-      // Handle any network or fetch-related errors
-      console.log("Error:", error);
+      console.error("No results found", error);
     }
+    console.log(searchResults);
   };
 
   return (
-    <Form className="d-flex" onSubmit={handleSubmit}>
+    <Form className="d-flex">
       <Form.Control
         type="search"
         placeholder="Search"
         className="me-2"
         aria-label="Search"
         as="input"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <Button variant="light">Search</Button>
+      <Button variant="light" onClick={handleSubmit}>
+        Search
+      </Button>
     </Form>
   );
 }
